@@ -11,14 +11,14 @@ import Home from '.'
 
 const props = {
   banners: BannersMock,
-  newGames: GamesMock,
+  newGames: [GamesMock[0]],
   mostPopularHighlight: HighlightMock,
-  mostPopularGames: GamesMock,
-  upComingHighlight: HighlightMock,
-  upComingGames: GamesMock,
-  upComingMoreGames: GamesMock,
+  mostPopularGames: [GamesMock[0]],
+  upcommingHighlight: HighlightMock,
+  upcommingGames: [GamesMock[0]],
+  upCommingMoreGames: [GamesMock[0]],
   freeGamesHighlight: HighlightMock,
-  freeGames: GamesMock
+  freeGames: [GamesMock[0]]
 }
 
 describe('<Home />', () => {
@@ -29,20 +29,20 @@ describe('<Home />', () => {
     expect(
       screen.getByRole('heading', { name: /contact/i })
     ).toBeInTheDocument()
-  })
 
-  it('should render the sections', () => {
-    renderWithTheme(<Home {...props} />)
-
-    expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /News/i })).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: /most populars/i })
+      screen.getByRole('heading', { name: /Most Popular/i })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: /upcoming/i })
+      screen.getByRole('heading', { name: /upcomming/i })
     ).toBeInTheDocument()
     expect(
       screen.getByRole('heading', { name: /free games/i })
     ).toBeInTheDocument()
+
+    expect(screen.getAllByText(/Defy death 1/i)).toHaveLength(1)
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
+    expect(screen.getAllByText(/read dead it's back/i)).toHaveLength(3)
   })
 })
