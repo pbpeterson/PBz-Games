@@ -8,14 +8,13 @@ export const parameters = {
     Provider: RouterContext.Provider
   },
   backgrounds: {
-    default: 'Won Light',
     values: [
       {
         name: 'Won Light',
         value: theme.colors.white
       },
       {
-        name: 'Won Dark',
+        name: 'won-dark',
         value: theme.colors.mainBg
       }
     ]
