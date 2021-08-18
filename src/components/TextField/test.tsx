@@ -1,5 +1,6 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { Email } from 'styled-icons/material-outlined'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import TextField from '.'
@@ -56,5 +57,53 @@ describe('<TextField />', () => {
     await waitFor(() => {
       expect(screen.getByLabelText(/textfield/i)).toHaveFocus()
     })
+  })
+  it('should render with icon', () => {
+    renderWithTheme(<TextField icon={<Email data-testid="icon" />} />)
+
+    expect(screen.getByTestId(/icon/i)).toBeInTheDocument()
+  })
+
+  it('renders with icon on the right side', () => {
+    renderWithTheme(
+      <TextField icon={<Email data-testid="icon" />} iconPosition="right" />
+    )
+
+    expect(screen.getByTestId(/icon/i).parentElement).toHaveStyle({ order: 1 })
+  })
+
+  it('does not change value when disabled', async () => {
+    const onInput = jest.fn()
+    renderWithTheme(
+      <TextField
+        onInput={onInput}
+        label="TextField"
+        labelFor="TextField"
+        id="TextField"
+        disabled
+      />
+    )
+    const input = screen.getByRole('textbox')
+    expect(input).toBeDisabled()
+
+    const text = 'that is my text'
+    userEvent.type(input, text)
+
+    await waitFor(() => {
+      expect(input).not.toHaveValue(text)
+    })
+    expect(onInput).not.toBeCalled()
+  })
+
+  it('render with error', () => {
+    renderWithTheme(
+      <TextField
+        label="TextField"
+        labelFor="TextField"
+        id="TextField"
+        error="ops something went wrong"
+      />
+    )
+    expect(screen.getByText(/ops something went wrong/i)).toBeInTheDocument()
   })
 })
