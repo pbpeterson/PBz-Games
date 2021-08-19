@@ -21,6 +21,10 @@ export default {
       xxlarge: '2.8rem'
     }
   },
+  transition: {
+    default: '0.3s ease-in-out',
+    fast: '0.1s ease-in-out'
+  },
   colors: {
     primary: '#F231A5',
     secondary: '#3CD3C1',
