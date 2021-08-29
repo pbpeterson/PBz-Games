@@ -70,5 +70,14 @@ describe('<Heading />', () => {
         'border-left': '0.7rem solid #F231A5'
       }
     )
-  })
+  }),
+    it('should render huge size', () => {
+      renderWithTheme(<Heading size="huge">Most Populars</Heading>)
+
+      expect(
+        screen.getByRole('heading', { name: /most populars/i })
+      ).toHaveStyle({
+        'font-size': '5.2rem'
+      })
+    })
 })
