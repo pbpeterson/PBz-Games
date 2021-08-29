@@ -40,7 +40,6 @@ describe('<Menu />', () => {
   it('should render register box when logged out', () => {
     renderWithTheme(<Menu />)
 
-    expect(screen.getByText(/log in now/i)).toBeInTheDocument()
     expect(screen.getByText(/sign up/i)).toBeInTheDocument()
   })
 
