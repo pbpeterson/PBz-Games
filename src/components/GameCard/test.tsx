@@ -30,7 +30,7 @@ describe('<GameCard />', () => {
   })
 
   it('should render a price in label', () => {
-    renderWithTheme(<GameCard {...props} />)
+    renderWithTheme(<GameCard {...props} ribbon="<p>Teste</p>" />)
 
     expect(screen.getByText('235')).not.toHaveStyle({
       'text-decoration': 'line-through'
