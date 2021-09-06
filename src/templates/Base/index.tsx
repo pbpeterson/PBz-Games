@@ -11,8 +11,8 @@ const Base = ({ children }: BaseTemplateProps) => (
   <section>
     <Container>
       <Menu />
+      {children}
       <S.SectionFooter>
-        {children}
         <Container>
           <Footer />
         </Container>
