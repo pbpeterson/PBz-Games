@@ -9,7 +9,7 @@ describe('<Divider />', () => {
     expect(container.firstChild).toMatchInlineSnapshot(`
 .c0 {
   margin: 4.8rem auto 3.2rem;
-  height: 0 1rem;
+  height: 0.1rem;
   background: rgba(181,181,181,0.3);
   border: 0;
 }
@@ -20,7 +20,7 @@ describe('<Divider />', () => {
   }
 }
 
-<div
+<hr
   class="c0"
 />
 `)
