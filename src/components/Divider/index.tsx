@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Divider = styled.div`
+export const Divider = styled.hr`
   ${({ theme }) => css`
     margin: ${theme.spacings.xlarge} auto ${theme.spacings.medium};
-    height: 0 1rem;
+    height: 0.1rem;
     background: rgba(181, 181, 181, 0.3);
     border: 0;
 
