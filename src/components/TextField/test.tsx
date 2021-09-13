@@ -30,7 +30,7 @@ describe('<TextField />', () => {
     renderWithTheme(
       <TextField
         label="textfield"
-        labelFor="textfield"
+        name="textfield"
         onInput={onInput}
         id="textfield"
       />
@@ -48,7 +48,7 @@ describe('<TextField />', () => {
   })
   it('should be acessible', async () => {
     renderWithTheme(
-      <TextField label="textfield" labelFor="textfield" id="textfield" />
+      <TextField label="textfield" name="textfield" id="textfield" />
     )
     expect(document.body).toHaveFocus()
 
@@ -78,7 +78,7 @@ describe('<TextField />', () => {
       <TextField
         onInput={onInput}
         label="TextField"
-        labelFor="TextField"
+        name="TextField"
         id="TextField"
         disabled
       />
@@ -99,7 +99,7 @@ describe('<TextField />', () => {
     renderWithTheme(
       <TextField
         label="TextField"
-        labelFor="TextField"
+        name="TextField"
         id="TextField"
         error="ops something went wrong"
       />
