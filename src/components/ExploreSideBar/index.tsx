@@ -1,11 +1,20 @@
-import Button from 'components/Button'
-import CheckBox from 'components/CheckBox'
-import Heading from 'components/Heading'
-import Radio from 'components/Radio'
 import { useState } from 'react'
-import * as S from './styles'
 import { Close } from '@styled-icons/material-outlined/Close'
 import { FilterList } from '@styled-icons/material-outlined/FilterList'
+
+import Heading from 'components/Heading'
+import Button from 'components/Button'
+import Checkbox from 'components/CheckBox'
+import Radio from 'components/Radio'
+
+import * as S from './styles'
+
+export type ItemProps = {
+  title: string
+  name: string
+  type: string
+  fields: Field[]
+}
 
 type Field = {
   label: string
@@ -16,24 +25,17 @@ type Values = {
   [field: string]: boolean | string
 }
 
-export type ExploreSideBarProps = {
+export type ExploreSidebarProps = {
   items: ItemProps[]
   initialValues?: Values
   onFilter: (values: Values) => void
 }
 
-export type ItemProps = {
-  title: string
-  name: string
-  type: 'checkbox' | 'radio' | string
-  fields: Field[]
-}
-
-const ExploreSideBar = ({
+const ExploreSidebar = ({
   items,
   onFilter,
   initialValues = {}
-}: ExploreSideBarProps) => {
+}: ExploreSidebarProps) => {
   const [values, setValues] = useState(initialValues)
   const [isOpen, setIsOpen] = useState(false)
 
@@ -43,6 +45,7 @@ const ExploreSideBar = ({
 
   const handleFilter = () => {
     onFilter(values)
+    setIsOpen(false)
   }
 
   return (
@@ -53,44 +56,49 @@ const ExploreSideBar = ({
         <Close aria-label="close filters" onClick={() => setIsOpen(false)} />
       </S.IconWrapper>
 
-      {items.map((item) => (
-        <div key={item.name}>
-          <Heading lineBottom lineColor="secondary" size="small">
-            {item.title}
-          </Heading>
+      <S.Content>
+        {items.map((item) => (
+          <S.Items key={item.title}>
+            <Heading lineBottom lineColor="secondary" size="small">
+              {item.title}
+            </Heading>
 
-          {item.type === 'checkbox' &&
-            item.fields.map((field) => (
-              <CheckBox
-                key={field.name}
-                name={field.name}
-                label={field.label}
-                labelFor={field.name}
-                isChecked={!!values[field.name]}
-                onCheck={(v) => handleChange(field.name, v)}
-              />
-            ))}
+            {item.type === 'checkbox' &&
+              item.fields.map((field) => (
+                <Checkbox
+                  key={field.name}
+                  name={field.name}
+                  label={field.label}
+                  labelFor={field.name}
+                  isChecked={!!values[field.name]}
+                  onCheck={(v) => handleChange(field.name, v)}
+                />
+              ))}
 
-          {item.type == 'radio' &&
-            item.fields.map((field) => (
-              <Radio
-                key={field.name}
-                id={field.name}
-                name={item.name}
-                label={field.label}
-                labelFor={field.name}
-                value={field.name}
-                defaultChecked={field.name === values[item.name]}
-                onChange={() => handleChange(item.name, field.name)}
-              />
-            ))}
-        </div>
-      ))}
-      <Button fullWidth size="medium" onClick={handleFilter}>
-        Filter
-      </Button>
+            {item.type === 'radio' &&
+              item.fields.map((field) => (
+                <Radio
+                  key={field.name}
+                  id={field.name}
+                  value={field.name}
+                  name={item.name}
+                  label={field.label}
+                  labelFor={field.name}
+                  defaultChecked={field.name === values[item.name]}
+                  onChange={() => handleChange(item.name, field.name)}
+                />
+              ))}
+          </S.Items>
+        ))}
+      </S.Content>
+
+      <S.Footer>
+        <Button fullWidth size="medium" onClick={handleFilter}>
+          Filter
+        </Button>
+      </S.Footer>
     </S.Wrapper>
   )
 }
 
-export default ExploreSideBar
+export default ExploreSidebar
