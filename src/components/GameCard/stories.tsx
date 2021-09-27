@@ -9,8 +9,8 @@ export default {
     slug: 'population-zero',
     developer: 'RockStar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x140',
-    price: '235',
-    promotionalPrice: 'R$ 215,00'
+    price: 235,
+    promotionalPrice: 215
   },
   argTypes: {
     onFav: { action: 'clicked' },
