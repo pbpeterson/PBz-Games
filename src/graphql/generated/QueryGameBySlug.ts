@@ -51,7 +51,7 @@ export interface QueryGameBySlug_games {
   gallery: QueryGameBySlug_games_gallery[];
   cover: QueryGameBySlug_games_cover | null;
   developers: QueryGameBySlug_games_developers[];
-  publisher: QueryGameBySlug_games_publisher | null;
+  publisher?: QueryGameBySlug_games_publisher | null;
   categories: QueryGameBySlug_games_categories[];
   platforms: QueryGameBySlug_games_platforms[];
 }

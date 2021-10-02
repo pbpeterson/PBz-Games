@@ -34,7 +34,7 @@ export async function getStaticProps() {
         title: game.name,
         slug: game.slug,
         developer: game.developers[0] ? game.developers[0].name : 'Unknown',
-        img: game.cover?.url,
+        img: game.cover?.url || null,
         price: game.price
       })),
       mostPopularHighlight: HighlightMock,
