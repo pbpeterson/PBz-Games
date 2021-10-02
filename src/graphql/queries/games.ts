@@ -28,9 +28,9 @@ export const QUERY_GAME_BY_SLUG = gql`
       developers {
         name
       }
-      # publisher {
-      #   name
-      # }
+      publisher {
+        name
+      }
       categories {
         name
       }

@@ -16,7 +16,6 @@ const props = {
   mostPopularGames: [GamesMock[0]],
   upcommingHighlight: HighlightMock,
   upcommingGames: [GamesMock[0]],
-  upCommingMoreGames: [GamesMock[0]],
   freeGamesHighlight: HighlightMock,
   freeGames: [GamesMock[0]]
 }
@@ -43,7 +42,7 @@ describe('<Home />', () => {
   it('should render menu and footer', () => {
     renderWithTheme(<Home {...props} />)
 
-    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(5)
+    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(4)
     expect(screen.getByTestId(/mock bannerslider/i)).toBeInTheDocument()
   })
 })
