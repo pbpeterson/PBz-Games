@@ -55,7 +55,27 @@ export interface Home_NewGames {
   price: number;
 }
 
+export interface Home_FreeGames_cover {
+  __typename: "UploadFile";
+  url: string;
+}
+
+export interface Home_FreeGames_developers {
+  __typename: "Developer";
+  name: string;
+}
+
+export interface Home_FreeGames {
+  __typename: "Game";
+  name: string;
+  slug: string;
+  cover: Home_FreeGames_cover | null;
+  developers: Home_FreeGames_developers[];
+  price: number;
+}
+
 export interface Home {
   banners: Home_banners[];
   NewGames: Home_NewGames[];
+  FreeGames: Home_FreeGames[];
 }

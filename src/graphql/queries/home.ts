@@ -14,6 +14,9 @@ export const QUERY_HOME = gql`
     ) {
       ...GameFragment
     }
+    FreeGames: games(where: { price: 0 }, sort: "price", limit: 8) {
+      ...GameFragment
+    }
   }
 
   ${BannerFragment}
