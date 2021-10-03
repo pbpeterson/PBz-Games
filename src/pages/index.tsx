@@ -1,6 +1,5 @@
 import Home, { HomeTemplateProps } from 'templates/Home'
 
-import GamesMock from 'components/GameCardSlider/mock'
 import HighlightMock from 'components/Highlight/mock'
 import { initializeApollo } from 'utils/apollo'
 import { Home as QueryHome } from 'graphql/generated/Home'
@@ -14,7 +13,7 @@ export async function getStaticProps() {
   const apolloClient = initializeApollo()
 
   const {
-    data: { banners, NewGames, FreeGames }
+    data: { banners, NewGames, FreeGames, sections }
   } = await apolloClient.query<QueryHome>({ query: QUERY_HOME })
 
   return {
@@ -37,9 +36,16 @@ export async function getStaticProps() {
         img: game.cover?.url || null,
         price: game.price
       })),
+      newGamesTitle: sections?.newGames?.title,
       mostPopularHighlight: HighlightMock,
-      mostPopularGames: GamesMock,
-      upcommingHighlight: HighlightMock,
+      mostPopularGames: sections?.popularGames!.games.map((game) => ({
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0] ? game.developers[0].name : 'Unknown',
+        img: game.cover?.url || null,
+        price: game.price
+      })),
+      mostPopularGamesTitle: sections?.popularGames?.title,
       freeGamesHighlight: HighlightMock,
       freeGames: FreeGames.map((game) => ({
         title: game.name,
@@ -47,7 +53,8 @@ export async function getStaticProps() {
         developer: game.developers[0] ? game.developers[0].name : 'Unknown',
         img: game.cover?.url || null,
         price: game.price
-      }))
+      })),
+      freeGamesTitle: sections?.freeGames?.title
     }
   }
 }

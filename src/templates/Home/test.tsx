@@ -12,12 +12,13 @@ import Home from '.'
 const props = {
   banners: BannersMock,
   newGames: [GamesMock[0]],
+  newGamesTitle: 'New Games',
   mostPopularHighlight: HighlightMock,
   mostPopularGames: [GamesMock[0]],
-  upcommingHighlight: HighlightMock,
-  upcommingGames: [GamesMock[0]],
+  mostPopularGamesTitle: 'Most Populars',
   freeGamesHighlight: HighlightMock,
-  freeGames: [GamesMock[0]]
+  freeGames: [GamesMock[0]],
+  freeGamesTitle: 'Free Games'
 }
 
 jest.mock('components/ShowCase', () => {
