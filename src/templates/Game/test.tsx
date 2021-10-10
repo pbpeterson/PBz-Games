@@ -5,8 +5,6 @@ import galleryMock from 'components/Gallery/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import gameInfoMock from 'components/GameInfo/mock'
 import gameDetailsMock from 'components/GameDetails/mock'
-import highlightsMock from 'components/Highlight/mock'
-
 import Game, { GameTemplateProps } from '.'
 
 const props: GameTemplateProps = {
@@ -15,8 +13,6 @@ const props: GameTemplateProps = {
   gallery: galleryMock,
   description: `<h1>Content</h1>`,
   details: gameDetailsMock,
-  upComingGames: gamesMock,
-  upComingHighlight: highlightsMock,
   recommendedGames: gamesMock,
   recommendedTitle: 'Recommended Games'
 }
@@ -64,7 +60,7 @@ describe('<Game />', () => {
     expect(screen.getByTestId(/mock gallery/i)).toBeInTheDocument()
     expect(screen.getByTestId(/mock gamedetails/i)).toBeInTheDocument()
     expect(screen.getByTestId(/mock gameinfo/i)).toBeInTheDocument()
-    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(2)
+    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(1)
     expect(screen.getByText(/content/i)).toBeInTheDocument()
   })
 
