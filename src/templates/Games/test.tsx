@@ -35,16 +35,6 @@ useRouter.mockImplementation(() => ({
 }))
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
-    renderWithTheme(
-      <MockedProvider mocks={[gamesMock]} addTypename={false}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>
-    )
-
-    expect(screen.getByLabelText(/loading/i)).toBeInTheDocument()
-  })
-
   it('should render sections', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
@@ -54,7 +44,6 @@ describe('<Games />', () => {
 
     // it starts without data
     // shows loading
-    expect(screen.getByLabelText(/loading/i)).toBeInTheDocument()
 
     // we wait until we have data to get the elements
     // get => tem certeza do elemento
