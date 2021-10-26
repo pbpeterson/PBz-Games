@@ -99,4 +99,15 @@ describe('<Games />', () => {
       }
     })
   })
+  it('should render empty when no games found', async () => {
+    renderWithTheme(
+      <MockedProvider mocks={[]} addTypename={false}>
+        <Games filterItems={filterItemsMock} />
+      </MockedProvider>
+    )
+
+    expect(
+      await screen.findByText(/we didn't find any games with this filter/i)
+    ).toBeInTheDocument()
+  })
 })
