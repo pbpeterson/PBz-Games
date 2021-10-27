@@ -35,6 +35,7 @@
     "jest": "^27.0.6",
     "lodash.xor": "^4.5.0",
     "next": "11.0.1",
+    "next-progress": "^1.0.8",
     "next-pwa": "^5.2.23",
     "polished": "^4.1.3",
     "react": "17.0.2",
