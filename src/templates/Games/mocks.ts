@@ -7,6 +7,7 @@ export const noGamesMock = {
   },
   result: {
     data: {
+      id: '1',
       games: [],
       gamesConnection: {
         values: [],
@@ -25,6 +26,7 @@ export const gamesMock = {
     data: {
       games: [
         {
+          id: '2',
           name: 'RimWorld',
           slug: 'rimworld',
           cover: {

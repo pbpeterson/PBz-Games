@@ -56,8 +56,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   })
 
   return {
+    revalidade: 60,
     props: {
-      revalidade: 60,
       cover: game.cover?.src,
       gameInfo: {
         title: game.name,

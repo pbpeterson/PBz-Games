@@ -48,6 +48,7 @@ export interface Home_NewGames_developers {
 
 export interface Home_NewGames {
   __typename: "Game";
+  id: string;
   name: string;
   slug: string;
   cover: Home_NewGames_cover | null;
@@ -67,6 +68,7 @@ export interface Home_FreeGames_developers {
 
 export interface Home_FreeGames {
   __typename: "Game";
+  id: string;
   name: string;
   slug: string;
   cover: Home_FreeGames_cover | null;
@@ -134,6 +136,7 @@ export interface Home_sections_popularGames_games_developers {
 
 export interface Home_sections_popularGames_games {
   __typename: "Game";
+  id: string;
   name: string;
   slug: string;
   cover: Home_sections_popularGames_games_cover | null;
