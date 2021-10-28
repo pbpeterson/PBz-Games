@@ -11,23 +11,23 @@ export const bannerMapper = (banners: Home_banners[]) => {
     subtitle: banner.subtitle,
     buttonLabel: banner.button?.label,
     buttonLink: banner.button?.link,
-    ribbon: banner.ribbon?.text || null,
-    ribbonColor: banner.ribbon?.color || null,
-    ribbonSize: banner.ribbon?.size || null
+    ribbon: banner.ribbon?.text,
+    ribbonColor: banner.ribbon?.color,
+    ribbonSize: banner.ribbon?.size
   }))
 }
 
 export const gamesMapper = (games: Home_NewGames[] | null | undefined) => {
-  return (
-    games &&
-    games.map((game) => ({
-      title: game.name,
-      slug: game.slug,
-      developer: game.developers[0] ? game.developers[0].name : 'Unknown',
-      img: game.cover?.url || null,
-      price: game.price
-    }))
-  )
+  return games
+    ? games.map((game) => ({
+        id: game.id,
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: game.cover?.url,
+        price: game.price
+      }))
+    : []
 }
 
 export const highlightMapper = (
