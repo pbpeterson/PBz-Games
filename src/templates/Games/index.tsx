@@ -69,9 +69,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                     key={game.slug}
                     title={game.name}
                     slug={game.slug}
-                    developer={
-                      game.developers[0] ? game.developers[0].name : 'Unknown'
-                    }
+                    developer={game.developers[0].name}
                     img={game.cover!.url}
                     price={game.price}
                   />
