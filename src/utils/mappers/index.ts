@@ -11,9 +11,9 @@ export const bannerMapper = (banners: Home_banners[]) => {
     subtitle: banner.subtitle,
     buttonLabel: banner.button?.label,
     buttonLink: banner.button?.link,
-    ribbon: banner.ribbon?.text,
-    ribbonColor: banner.ribbon?.color,
-    ribbonSize: banner.ribbon?.size
+    ribbon: banner.ribbon?.text || null,
+    ribbonColor: banner.ribbon?.color || null,
+    ribbonSize: banner.ribbon?.size || null
   }))
 }
 
