@@ -3,7 +3,8 @@ import {
   Home_NewGames,
   Home_sections_freeGames_highlight
 } from 'graphql/generated/Home'
-import { bannerMapper, gamesMapper, highlightMapper } from '.'
+import { QueryGames_games } from 'graphql/generated/QueryGames'
+import { bannerMapper, gamesMapper, highlightMapper, cartMapper } from '.'
 
 describe('bannerMapper(', () => {
   it('should return the right format when mapped', () => {
@@ -92,5 +93,31 @@ describe('highlightMapper()', () => {
       buttonLabel: 'Button label',
       buttonLink: 'Button link'
     })
+  })
+})
+
+describe('cartMapper()', () => {
+  it('should return empty array if no games', () => {
+    expect(cartMapper(undefined)).toStrictEqual([])
+  })
+
+  it('should return mapped items', () => {
+    const game = {
+      id: '1',
+      cover: {
+        url: '/image.jpg'
+      },
+      name: 'game',
+      price: 10
+    } as QueryGames_games
+
+    expect(cartMapper([game])).toStrictEqual([
+      {
+        id: '1',
+        img: 'http://localhost:1337/image.jpg',
+        title: 'game',
+        price: '$10.00'
+      }
+    ])
   })
 })
