@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { screen, render } from '../../utils/test-utils'
 
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightsMock from 'components/Highlight/mock'
@@ -21,7 +20,7 @@ const props: WishlistTemplateProps = {
 
 describe('<Wishlist />', () => {
   it('should render the heading', () => {
-    renderWithTheme(<Wishlist {...props} />)
+    render(<Wishlist {...props} />)
 
     expect(screen.getByTestId(/Mock showcase/i)).toBeInTheDocument()
 
@@ -32,7 +31,7 @@ describe('<Wishlist />', () => {
   })
 
   it('should render empty when there are no games', () => {
-    renderWithTheme(
+    render(
       <Wishlist
         recommendedGames={props.recommendedGames}
         recommendedHighlight={highlightsMock}

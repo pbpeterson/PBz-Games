@@ -1,7 +1,6 @@
-import { screen } from '@testing-library/react'
-import { MockedProvider } from '@apollo/client/testing'
+import { screen, render } from '../../utils/test-utils'
 
-import { renderWithTheme } from 'utils/tests/helpers'
+import { MockedProvider } from '@apollo/client/testing'
 import filterItemsMock from 'components/ExploreSideBar/mock'
 
 import Games from '.'
@@ -36,7 +35,7 @@ useRouter.mockImplementation(() => ({
 
 describe('<Games />', () => {
   it('should render sections', async () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
@@ -57,7 +56,7 @@ describe('<Games />', () => {
     ).toBeInTheDocument()
   })
   it('should render more games when show more is clicked', async () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
@@ -70,7 +69,7 @@ describe('<Games />', () => {
     expect(await screen.findByText(/Fetch More Game/i)).toBeInTheDocument()
   })
   it('should change push router when selecting a filter', async () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
@@ -89,7 +88,7 @@ describe('<Games />', () => {
     })
   })
   it('should render empty when no games found', async () => {
-    renderWithTheme(
+    render(
       <MockedProvider mocks={[noGamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>

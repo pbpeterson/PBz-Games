@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { screen, render } from '../../utils/test-utils'
 
 import Auth from '.'
 
@@ -7,7 +6,7 @@ describe('<Auth />', () => {
   it('should render all components and  children', () => {
     const mainHeading = 'All your favorite games in one place'
     const subtitle = 'WON is the best and most complete gaming plataform'
-    renderWithTheme(
+    render(
       <Auth title="Auth Title">
         <input type="text" />
       </Auth>

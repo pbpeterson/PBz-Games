@@ -1,11 +1,10 @@
-import { screen } from '@testing-library/react'
+import { screen, render } from '../../utils/test-utils'
 
-import { renderWithTheme } from 'utils/tests/helpers'
 import Footer from '.'
 
 describe('<Footer />', () => {
   it('should render the footer', () => {
-    renderWithTheme(<Footer />)
+    render(<Footer />)
 
     expect(screen.getByText(/contact/i)).toBeInTheDocument()
     expect(screen.getByText(/follow us/i)).toBeInTheDocument()
