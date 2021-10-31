@@ -1,5 +1,6 @@
 import { RouterContext } from 'next/dist/next-server/lib/router-context'
 import { ThemeProvider } from 'styled-components'
+import { CartContext, CartContextDefaultValues } from 'hooks/use-cart/index.tsx'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 
@@ -23,10 +24,18 @@ export const parameters = {
 }
 
 export const decorators = [
-  (Story) => (
+  (Story, context) => (
     <ThemeProvider theme={theme} removeBg>
-      <GlobalStyles />
-      <Story />
+      <CartContext.Provider
+        value={{
+          ...CartContextDefaultValues,
+          ...(context?.args?.CartContextValue || {}),
+          ...context.args
+        }}
+      >
+        <GlobalStyles />
+        <Story />
+      </CartContext.Provider>
     </ThemeProvider>
   )
 ]
