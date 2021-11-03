@@ -6,6 +6,7 @@ import {
   ExitToApp,
   FormatListBulleted
 } from '@styled-icons/material-outlined'
+import { signOut } from 'next-auth/client'
 
 export type ProfileMenuProps = {
   activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string
@@ -31,12 +32,11 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
         <span>My Orders</span>
       </S.Link>
     </Link>
-    <Link href="/logout" passHref>
-      <S.Link>
-        <ExitToApp size={24} />
-        <span>Sign out</span>
-      </S.Link>
-    </Link>
+
+    <S.Link role="button" onClick={() => signOut()}>
+      <ExitToApp size={24} />
+      <span>Sign out</span>
+    </S.Link>
   </S.Nav>
 )
 
