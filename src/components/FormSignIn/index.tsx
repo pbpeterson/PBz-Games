@@ -5,11 +5,12 @@ import Link from 'next/link'
 import { Email, Lock } from 'styled-icons/material-outlined'
 
 import * as S from './styles'
-import { FormLink, FormWrapper } from 'components/Form'
+import { FormLink, FormWrapper, FormLoading } from 'components/Form'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 
 const FormSignIn = () => {
+  const [loading, setLoading] = useState(false)
   const [values, setValues] = useState({
     email: '',
     password: ''
@@ -22,6 +23,7 @@ const FormSignIn = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+    setLoading(true)
 
     // sign in
     const result = await signIn('credentials', {
@@ -33,6 +35,8 @@ const FormSignIn = () => {
     if (result?.url) {
       return push(result?.url)
     }
+
+    setLoading(false)
 
     // jogar o erro
     console.error('email ou senha inválida')
@@ -56,8 +60,8 @@ const FormSignIn = () => {
           icon={<Lock />}
         />
         <S.ForgotPassword href="#s">Forgot your password?</S.ForgotPassword>
-        <Button type="submit" size="large" fullWidth>
-          Sign in now
+        <Button type="submit" size="large" fullWidth disabled={loading}>
+          {loading ? <FormLoading /> : <span> Sign in now</span>}
         </Button>
         <FormLink>
           Do not have an account?{' '}
