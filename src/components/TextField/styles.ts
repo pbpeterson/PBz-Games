@@ -30,6 +30,11 @@ export const Input = styled.input<IconPositionProps>`
     width: 100%;
     display: flex;
     gap: 1rem;
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px ${theme.colors.lightGray} inset;
+      filter: none;
+    }
   `}
 `
 
