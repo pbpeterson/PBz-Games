@@ -25,13 +25,13 @@ describe('<TextField />', () => {
   })
 
   it('should render with change value', async () => {
-    const onInput = jest.fn()
+    const onInputChange = jest.fn()
 
     render(
       <TextField
         label="textfield"
         name="textfield"
-        onInput={onInput}
+        onInputChange={onInputChange}
         id="textfield"
       />
     )
@@ -42,9 +42,9 @@ describe('<TextField />', () => {
 
     await waitFor(() => {
       expect(input).toHaveValue(value)
-      expect(onInput).toHaveBeenCalledTimes(value.length)
+      expect(onInputChange).toHaveBeenCalledTimes(value.length)
     })
-    expect(onInput).toHaveBeenCalledWith(value)
+    expect(onInputChange).toHaveBeenCalledWith(value)
   })
   it('should be acessible', async () => {
     render(<TextField label="textfield" name="textfield" id="textfield" />)
@@ -71,10 +71,10 @@ describe('<TextField />', () => {
   })
 
   it('does not change value when disabled', async () => {
-    const onInput = jest.fn()
+    const onInputChange = jest.fn()
     render(
       <TextField
-        onInput={onInput}
+        onInputChange={onInputChange}
         label="TextField"
         name="TextField"
         id="TextField"
@@ -90,7 +90,7 @@ describe('<TextField />', () => {
     await waitFor(() => {
       expect(input).not.toHaveValue(text)
     })
-    expect(onInput).not.toBeCalled()
+    expect(onInputChange).not.toBeCalled()
   })
 
   it('render with error', () => {
