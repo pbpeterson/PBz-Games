@@ -6,7 +6,7 @@ import { Lock, ErrorOutline } from 'styled-icons/material-outlined'
 import { FormWrapper, FormLoading, FormError } from 'components/Form'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import { fieldErrors } from 'utils/validations'
+import { fieldErrors, resetValidate } from 'utils/validations'
 
 const FormResetPassword = () => {
   const [formError, setFormError] = useState('')
@@ -14,7 +14,7 @@ const FormResetPassword = () => {
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState({
     password: '',
-    confirmPassword: ''
+    confirm_password: ''
   })
   const routes = useRouter()
 
@@ -28,7 +28,7 @@ const FormResetPassword = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = {}
+    const errors = resetValidate(values)
 
     if (Object.keys(errors).length) {
       setFieldError(errors)
