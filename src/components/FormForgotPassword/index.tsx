@@ -1,22 +1,19 @@
 import { signIn } from 'next-auth/client'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
-import Link from 'next/link'
-import { Email, ErrorOutline, Lock } from 'styled-icons/material-outlined'
+import { Email, ErrorOutline } from 'styled-icons/material-outlined'
 
-import * as S from './styles'
-import { FormLink, FormWrapper, FormLoading, FormError } from 'components/Form'
+import { FormWrapper, FormLoading, FormError } from 'components/Form'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-import { fieldErrors, signInValidate } from 'utils/validations'
+import { fieldErrors } from 'utils/validations'
 
-const FormSignIn = () => {
+const FormForgotPassword = () => {
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<fieldErrors>({})
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState({
-    email: '',
-    password: ''
+    email: ''
   })
   const routes = useRouter()
 
@@ -30,7 +27,7 @@ const FormSignIn = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = signInValidate(values)
+    const errors = {}
 
     if (Object.keys(errors).length) {
       setFieldError(errors)
@@ -73,29 +70,13 @@ const FormSignIn = () => {
           onInputChange={(v) => handleInput('email', v)}
           icon={<Email />}
         />
-        <TextField
-          name="password"
-          placeholder="Password"
-          type="password"
-          error={fieldError?.password}
-          onInputChange={(v) => handleInput('password', v)}
-          icon={<Lock />}
-        />
-        <Link href="/forgot-password" passHref>
-          <S.ForgotPassword>Forgot your password?</S.ForgotPassword>
-        </Link>
+
         <Button type="submit" size="large" fullWidth disabled={loading}>
-          {loading ? <FormLoading /> : <span> Sign in now</span>}
+          {loading ? <FormLoading /> : <span> Send Email</span>}
         </Button>
-        <FormLink>
-          Do not have an account?{' '}
-          <Link href="/sign-up">
-            <a>Sign up</a>
-          </Link>
-        </FormLink>
       </form>
     </FormWrapper>
   )
 }
 
-export default FormSignIn
+export default FormForgotPassword
