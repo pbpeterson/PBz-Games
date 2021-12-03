@@ -29,6 +29,7 @@ export interface QueryWishlists_wishlists_games {
 
 export interface QueryWishlists_wishlists {
   __typename: "Wishlist";
+  id: string;
   games: QueryWishlists_wishlists_games[];
 }
 
