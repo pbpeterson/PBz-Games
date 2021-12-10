@@ -14,13 +14,16 @@ const WishlistButton = ({
   size = 'small'
 }: WishlistButtonProps) => {
   const [session] = useSession()
-  const { isInWishlist } = useWishlist()
+  const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist()
 
   const ButtonText = isInWishlist(id)
     ? 'Remove from wishlist'
     : 'Add to wishlist'
 
   if (!session) return null
+
+  const handleClick = () =>
+    isInWishlist(id) ? removeFromWishlist(id) : addToWishlist(id)
 
   return (
     <Button
@@ -32,6 +35,7 @@ const WishlistButton = ({
         )
       }
       size={size}
+      onClick={handleClick}
     >
       {hasText && ButtonText}
     </Button>

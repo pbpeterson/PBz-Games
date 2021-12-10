@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event'
 import { WishlistContextDefaultValues } from 'hooks/use-wishlist'
 import { render, screen } from 'utils/test-utils'
 import WishlistButton from '.'
@@ -48,5 +49,30 @@ describe('<WishlistButton />', () => {
     render(<WishlistButton id="1" hasText />, { wishlistProviderProps })
 
     expect(screen.queryByText(/add to wishlist/i)).not.toBeInTheDocument()
+  })
+  it('should add to wishlist', async () => {
+    const wishlistProviderProps = {
+      ...WishlistContextDefaultValues,
+      isInWishlist: () => false,
+      addToWishlist: jest.fn()
+    }
+    render(<WishlistButton id="1" hasText />, { wishlistProviderProps })
+
+    await userEvent.click(screen.getByText(/add to wishlist/i))
+
+    expect(wishlistProviderProps.addToWishlist).toHaveBeenCalledTimes(1)
+  })
+
+  it('should remove from wishlist', async () => {
+    const wishlistProviderProps = {
+      ...WishlistContextDefaultValues,
+      isInWishlist: () => true,
+      removeFromWishlist: jest.fn()
+    }
+    render(<WishlistButton id="1" hasText />, { wishlistProviderProps })
+
+    await userEvent.click(screen.getByText(/remove from wishlist/i))
+
+    expect(wishlistProviderProps.removeFromWishlist).toHaveBeenCalledTimes(1)
   })
 })
