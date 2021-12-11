@@ -16,8 +16,8 @@ export const MUTATION_CREATE_WISHLIST = gql`
 `
 
 export const MUTATION_UPDATE_WISHLIST = gql`
-  mutation UpdateWishList($WishlistProps: updateWishlistInput) {
-    updateWishlist(input: $WishlistProps) {
+  mutation UpdateWishList($input: updateWishlistInput!) {
+    updateWishlist(input: $input) {
       wishlist {
         id
         games {
