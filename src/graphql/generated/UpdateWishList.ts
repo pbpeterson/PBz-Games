@@ -45,5 +45,5 @@ export interface UpdateWishList {
 }
 
 export interface UpdateWishListVariables {
-  WishlistProps?: updateWishlistInput | null;
+  WishlistProps: updateWishlistInput;
 }

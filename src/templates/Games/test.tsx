@@ -8,6 +8,22 @@ import { fetchMoreMock, gamesMock, noGamesMock } from './mocks'
 import userEvent from '@testing-library/user-event'
 import apolloCache from 'utils/apolloCache'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter')
+const push = jest.fn()
+
+useRouter.mockImplementation(() => ({
+  push,
+  query: '',
+  asPath: '',
+  route: '/'
+}))
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useSession = jest.spyOn(require('next-auth/client'), 'useSession')
+const session = { jwt: 'any_jwt', user: { email: 'any_email' } }
+useSession.mockImplementation(() => [session])
+
 jest.mock('templates/Base', () => ({
   __esModule: true,
   default: function Mock({ children }: { children: React.ReactNode }) {
@@ -20,17 +36,6 @@ jest.mock('next/link', () => ({
   default: function Mock({ children }: { children: React.ReactNode }) {
     return <div>{children}</div>
   }
-}))
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const useRouter = jest.spyOn(require('next/router'), 'useRouter')
-const push = jest.fn()
-
-useRouter.mockImplementation(() => ({
-  push,
-  query: '',
-  asPath: '',
-  route: '/'
 }))
 
 describe('<Games />', () => {

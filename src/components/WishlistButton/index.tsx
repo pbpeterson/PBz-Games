@@ -22,9 +22,9 @@ const WishlistButton = ({
 
   if (!session) return null
 
-  const handleClick = () =>
+  const handleClick = () => {
     isInWishlist(id) ? removeFromWishlist(id) : addToWishlist(id)
-
+  }
   return (
     <Button
       icon={
@@ -34,6 +34,7 @@ const WishlistButton = ({
           <FavoriteBorder aria-label={ButtonText} />
         )
       }
+      minimal
       size={size}
       onClick={handleClick}
     >

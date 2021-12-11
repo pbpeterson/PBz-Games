@@ -1,4 +1,4 @@
-import { fireEvent, screen, render } from '../../utils/test-utils'
+import { screen, render } from '../../utils/test-utils'
 
 import GameCard from '.'
 
@@ -22,8 +22,6 @@ describe('<GameCard />', () => {
     expect(
       screen.getByRole('heading', { name: /rockstar games/i })
     ).toBeInTheDocument()
-
-    expect(screen.getByLabelText('Add to Wishlist')).toBeInTheDocument()
 
     expect(
       screen.getByRole('img', { name: /population zero/i })
@@ -58,20 +56,5 @@ describe('<GameCard />', () => {
     expect(screen.getByText('$20.00')).not.toHaveStyle({
       'text-decoration': 'line-through'
     })
-  })
-
-  it('should render a filled favorite icon when favorite is true', () => {
-    render(<GameCard favorite {...props} />)
-
-    expect(screen.getByLabelText(/remove from wishlist/i)).toBeInTheDocument()
-  })
-
-  it('should call onFav method when favorite is clicked', () => {
-    const onFav = jest.fn()
-    render(<GameCard onFav={onFav} {...props} />)
-
-    fireEvent.click(screen.getAllByRole('button')[0])
-
-    expect(onFav).toBeCalled()
   })
 })

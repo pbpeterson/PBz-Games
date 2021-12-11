@@ -55,6 +55,7 @@ export const fetchMoreMock = {
       games: [
         {
           name: 'Fetch More Game',
+          id: '1',
           slug: 'fetch-more',
           price: 518.39,
           developers: [{ name: 'sample developer' }],
