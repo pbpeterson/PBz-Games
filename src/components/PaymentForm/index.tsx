@@ -1,4 +1,4 @@
-import { CardElement } from '@stripe/react-stripe-js'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
@@ -15,6 +15,8 @@ type PaymentFormProps = {
 }
 
 const PaymentForm = ({ session }: PaymentFormProps) => {
+  const stripe = useStripe()
+  const elements = useElements()
   const { items } = useCart()
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -53,6 +55,20 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     setLoading(true)
+
+    console.log(elements?.getElement(CardElement))
+
+    const payload = await stripe!.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements!.getElement(CardElement)!
+      }
+    })
+    if (payload.error) {
+      setError(`Payment Failed ${payload.error.message}`)
+    } else {
+      console.log('Compra feita com sucesso')
+    }
+    setLoading(false)
   }
 
   return (
@@ -74,7 +90,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
           {error && (
             <S.Error>
               <ErrorOutline size={20} />
-              <p>{error}</p>
+              {error}
             </S.Error>
           )}
         </S.Body>
