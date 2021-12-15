@@ -24,6 +24,7 @@ export const Text = styled.p`
   ${({ theme }) => css`
     text-align: center;
     max-width: 70rem;
+    margin-bottom: 15rem;
 
     a {
       color: ${theme.colors.primary};

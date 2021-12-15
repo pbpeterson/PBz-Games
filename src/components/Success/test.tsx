@@ -1,3 +1,4 @@
+import 'match-media-mock'
 import { render, screen } from 'utils/test-utils'
 
 import Success from '.'
