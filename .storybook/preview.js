@@ -1,4 +1,4 @@
-import { RouterContext } from 'next/dist/next-server/lib/router-context'
+import { RouterContext } from 'next/dist/shared/lib/router-context'
 import { ThemeProvider } from 'styled-components'
 import { CartContext, CartContextDefaultValues } from 'hooks/use-cart/index.tsx'
 import GlobalStyles from 'styles/global'
