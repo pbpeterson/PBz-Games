@@ -6,6 +6,7 @@ import { FormLoading } from 'components/Form'
 import Heading from 'components/Heading'
 import { useCart } from 'hooks/use-cart'
 import { Session } from 'next-auth/client'
+import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
 import { createPaymentIntent } from 'utils/stripe/methods'
 import * as S from './styles'
@@ -18,6 +19,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   const stripe = useStripe()
   const elements = useElements()
   const { items } = useCart()
+  const router = useRouter()
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(true)
@@ -67,6 +69,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       setError(`Payment Failed ${payload.error.message}`)
     } else {
       console.log('Compra feita com sucesso')
+      router.push('success')
     }
     setLoading(false)
   }
