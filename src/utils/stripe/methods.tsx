@@ -51,7 +51,7 @@ export const createPayment = async ({
     url: '/orders',
     body: JSON.stringify({
       cart: items,
-      paymenentIntentId: paymentIntent?.id,
+      paymentIntentId: paymentIntent?.id,
       paymentMethod: paymentIntent?.payment_method
     }),
     token
