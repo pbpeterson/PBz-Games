@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
+import { PaymentIntent, StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import { FormLoading } from 'components/Form'
@@ -8,7 +8,7 @@ import { useCart } from 'hooks/use-cart'
 import { Session } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import React, { useState, useEffect } from 'react'
-import { createPaymentIntent } from 'utils/stripe/methods'
+import { createPayment, createPaymentIntent } from 'utils/stripe/methods'
 import * as S from './styles'
 
 type PaymentFormProps = {
@@ -54,11 +54,27 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     setError(event?.error ? event.error.message : '')
   }
 
+  const saveOrder = async (paymentIntent?: PaymentIntent) => {
+    const data = await createPayment({
+      items,
+      paymentIntent,
+      token: session.jwt
+    })
+
+    return data
+  }
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     setLoading(true)
 
-    console.log(elements?.getElement(CardElement))
+    if (freeGames) {
+      saveOrder()
+
+      router.push('/success')
+
+      return
+    }
 
     const payload = await stripe!.confirmCardPayment(clientSecret, {
       payment_method: {
@@ -68,8 +84,9 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     if (payload.error) {
       setError(`Payment Failed ${payload.error.message}`)
     } else {
-      console.log('Compra feita com sucesso')
-      router.push('success')
+      saveOrder(payload.paymentIntent)
+
+      router.push('/success')
     }
     setLoading(false)
   }
