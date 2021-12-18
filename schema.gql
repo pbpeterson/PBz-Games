@@ -1052,6 +1052,7 @@ type EmailDesignerEmailTemplate {
   id: ID!
   created_at: DateTime!
   updated_at: DateTime!
+  sourceCodeToTemplateId: Int
   design: JSON
   name: String
   subject: String
@@ -1062,6 +1063,7 @@ type EmailDesignerEmailTemplate {
 }
 
 input EmailTemplateInput {
+  sourceCodeToTemplateId: Int
   design: JSON
   name: String
   subject: String
@@ -1074,6 +1076,7 @@ input EmailTemplateInput {
 }
 
 input editEmailTemplateInput {
+  sourceCodeToTemplateId: Int
   design: JSON
   name: String
   subject: String
