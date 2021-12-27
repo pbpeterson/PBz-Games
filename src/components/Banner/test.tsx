@@ -20,7 +20,6 @@ describe('<Banner />', () => {
     expect(
       screen.getByRole('heading', { name: /Play the new crashlands season/i })
     ).toBeInTheDocument()
-    expect(screen.getByLabelText(/Defy death/i)).toBeInTheDocument()
   })
 
   it('should render a Ribbon', () => {
