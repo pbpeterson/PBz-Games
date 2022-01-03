@@ -24,10 +24,10 @@ export const Column = styled.div`
     nav,
     a {
       display: block;
-      color: ${theme.colors.gray};
+      color: ${theme.colors.black};
       text-decoration: none;
       margin-bottom: ${theme.spacings.xxsmall};
-      font-size: ${theme.font.sizes.small};
+      font-size: ${theme.font.sizes.medium};
     }
     a:hover {
       text-decoration: underline;
