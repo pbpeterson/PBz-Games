@@ -5,6 +5,9 @@ import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import NextProgress from 'next-progress'
 
+import { DefaultSeo } from 'next-seo'
+import SEO from '../../next-seo.config'
+
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { useApollo } from 'utils/apollo'
@@ -30,6 +33,7 @@ function App({ Component, pageProps }: AppProps) {
                   content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
                 />
               </Head>
+              <DefaultSeo {...SEO} />
               <GlobalStyles />
               <NextProgress color="#F231A5" height={3} />
               <Component {...pageProps} />
