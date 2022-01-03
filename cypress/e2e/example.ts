@@ -3,5 +3,6 @@
 describe('Cypress TS', () => {
   it('should go to google', () => {
     cy.google()
+    
   })
 })
