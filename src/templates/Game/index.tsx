@@ -1,3 +1,5 @@
+import { NextSeo } from 'next-seo'
+
 import { Divider } from 'components/Divider'
 import Gallery, { GalleryImageProps } from 'components/Gallery'
 import { GameCardProps } from 'components/GameCard'
@@ -10,6 +12,7 @@ import Base from 'templates/Base'
 import * as S from './styles'
 
 export type GameTemplateProps = {
+  slug?: string
   cover: string
   gameInfo: GameInfoProps
   gallery?: GalleryImageProps[]
@@ -20,6 +23,7 @@ export type GameTemplateProps = {
 }
 
 const Game = ({
+  slug,
   cover,
   gameInfo,
   gallery,
@@ -29,6 +33,28 @@ const Game = ({
   recommendedTitle
 }: GameTemplateProps) => (
   <Base>
+    <NextSeo
+      title={`${gameInfo.title} - Won Games`}
+      description={gameInfo.description}
+      canonical={`http://localhost:3000/${slug}`}
+      openGraph={{
+        url: 'https://pbpeterson.github.io/',
+        title: `${gameInfo.title} - Won Games`,
+        description: gameInfo.description,
+        images: [
+          {
+            url: cover,
+            alt: gameInfo.title
+          }
+        ],
+        site_name: 'SiteName'
+      }}
+      twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image'
+      }}
+    />
     <S.Cover src={cover} role="image" aria-label="cover" />
 
     <S.Main>
