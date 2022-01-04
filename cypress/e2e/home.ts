@@ -5,5 +5,14 @@ describe('Home Page', () => {
     cy.visit('/')
 
     cy.shouldRenderBanner()
+    cy.shouldRenderShowcase({
+      name: 'New Games'
+    })
+    cy.shouldRenderShowcase({
+      name: 'Most Popular Games'
+    })
+    cy.shouldRenderShowcase({
+      name: 'Free Games'
+    })
   })
 })
