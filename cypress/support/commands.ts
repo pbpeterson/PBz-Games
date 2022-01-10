@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import '@testing-library/cypress/add-commands';
+import '@testing-library/cypress/add-commands'
 
 Cypress.Commands.add('google', () => cy.visit('https://www.google.com'))
 
@@ -47,9 +47,16 @@ Cypress.Commands.add('shouldRenderBanner', () => {
   })
 })
 
-Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false}) => {
-  cy.get(`[data-cy="${name}"]`).within(()=> {
+Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false }) => {
+  cy.get(`[data-cy="${name}"]`).within(() => {
     cy.findByRole('heading', { name }).should('exist')
-  })
-})
 
+    cy.get(`[data-cy="gamecard"]`).should('have.length.gt', 0)
+  })
+
+  if (highlight) {
+    cy.get(`[data-cy="highlight"]`).within(() => {
+      cy.findByRole('link').should('have.attr', 'href')
+    })
+  }
+})
