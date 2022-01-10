@@ -48,15 +48,19 @@ Cypress.Commands.add('shouldRenderBanner', () => {
 })
 
 Cypress.Commands.add('shouldRenderShowcase', ({ name, highlight = false }) => {
-  cy.get(`[data-cy="${name}"]`).within(() => {
+  cy.getByDataCy(name).within(() => {
     cy.findByRole('heading', { name }).should('exist')
 
-    cy.get(`[data-cy="gamecard"]`).should('have.length.gt', 0)
+    cy.getByDataCy('gamecard').should('have.length.gt', 0)
   })
 
   if (highlight) {
-    cy.get(`[data-cy="highlight"]`).within(() => {
+    cy.getByDataCy('highlight').within(() => {
       cy.findByRole('link').should('have.attr', 'href')
     })
   }
+})
+
+Cypress.Commands.add('getByDataCy', (dataCy) => {
+  cy.get(`[data-cy="${dataCy}"]`)
 })

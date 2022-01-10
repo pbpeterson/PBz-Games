@@ -5,6 +5,9 @@ type ShowcaseAttributes = {
   highlight?: boolean
 }
 
+type DataCyAtribbutes = string
+
+
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -27,5 +30,13 @@ declare namespace Cypress {
      */
 
     shouldRenderShowcase(attrs: ShowcaseAttributes): Chainable<Element>
+
+
+      /**
+     * Custom command to showcase in page
+     * @example cy.getDataCy('dataCy')
+     */
+    
+    getByDataCy(attrs: DataCyAtribbutes): Chainable<Element>
   }
 }
