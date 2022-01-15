@@ -66,7 +66,23 @@ Cypress.Commands.add('getByDataCy', (dataCy) => {
 })
 
 Cypress.Commands.add('getFields', (fields) => {
-  fields.map(({label}) => {
+  fields.map(({ label }) => {
     cy.findByText(label).should('exist')
   })
+})
+
+Cypress.Commands.add('shouldBeLessThan', (value) => {
+  cy.findByText(/\$\d+(\.\d{1,2})?/)
+    .invoke('text')
+    .then(($el) => $el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.lt', value)
+})
+
+Cypress.Commands.add('shouldBeGreaterThan', (value) => {
+  cy.findByText(/\$\d+(\.\d{1,2})?/)
+    .invoke('text')
+    .then(($el) => $el.replace('$', ''))
+    .then(parseFloat)
+    .should('be.gt', value)
 })

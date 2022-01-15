@@ -12,7 +12,6 @@ type FieldsAttributes = {
   name: string | number
 }
 
-
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -29,19 +28,18 @@ declare namespace Cypress {
 
     shouldRenderBanner(): Chainable<Element>
 
-      /**
+    /**
      * Custom command to showcase in page
      * @example cy.shouldRenderShowcase()
      */
 
     shouldRenderShowcase(attrs: ShowcaseAttributes): Chainable<Element>
 
-
-      /**
+    /**
      * Custom command to showcase in page
      * @example cy.getDataCy('dataCy')
      */
-    
+
     getByDataCy(attrs: DataCyAtribbutes): Chainable<Element>
 
     /**
@@ -50,5 +48,19 @@ declare namespace Cypress {
      */
 
     getFields(fields: FieldsAttributes[]): Chainable<Element>
+
+    /**
+     * Custom command to showcase in page
+     * @example cy.shouldBeLessThan(12)
+     */
+
+    shouldBeLessThan(value: number): Chainable<Element>
+
+    /**
+     * Custom command to showcase in page
+     * @example cy.shouldBeLessThan(12)
+     */
+
+    shouldBeGreaterThan(value: number): Chainable<Element>
   }
 }
