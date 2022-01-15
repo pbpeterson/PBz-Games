@@ -7,6 +7,11 @@ type ShowcaseAttributes = {
 
 type DataCyAtribbutes = string
 
+type FieldsAttributes = {
+  label: string
+  name: string | number
+}
+
 
 declare namespace Cypress {
   interface Chainable {
@@ -38,5 +43,12 @@ declare namespace Cypress {
      */
     
     getByDataCy(attrs: DataCyAtribbutes): Chainable<Element>
+
+    /**
+     * Custom command to showcase in page
+     * @example cy.getFields('dataCy')
+     */
+
+    getFields(fields: FieldsAttributes[]): Chainable<Element>
   }
 }
