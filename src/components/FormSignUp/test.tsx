@@ -3,6 +3,17 @@ import { screen, render } from '../../utils/test-utils'
 import FormSignUp from '.'
 import { MockedProvider } from '@apollo/client/testing'
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      route: '/',
+      pathname: '',
+      query: '',
+      asPath: ''
+    }
+  }
+}))
+
 describe('<FormSignUp />', () => {
   it('should render the form', () => {
     render(
