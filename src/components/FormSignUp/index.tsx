@@ -17,8 +17,10 @@ import { MUTATION_REGISTER } from 'graphql/mutations/register'
 import { signIn } from 'next-auth/client'
 
 import { fieldErrors, signUpValidate } from 'utils/validations'
+import { useRouter } from 'next/router'
 
 const FormSignUp = () => {
+  const { push } = useRouter()
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<fieldErrors>({})
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({
@@ -33,13 +35,13 @@ const FormSignUp = () => {
         err?.graphQLErrors[0]?.extensions?.exception.data.message[0].messages[0]
           .message
       ),
-    onCompleted: () => {
+    onCompleted: async () => {
       !error &&
         signIn('credentials', {
           ...values,
-          redirect: false,
-          callbackUrl: '/'
+          redirect: false
         })
+      push('/')
     }
   })
 
