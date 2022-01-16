@@ -66,6 +66,9 @@ describe('Explore Page', () => {
 
     cy.findByText('Under $50').click()
     cy.location('href').should('contain', 'price_lte=50')
+
+    cy.wait(500)
+
     cy.getByDataCy('gamecard')
       .first()
       .within(() => {
@@ -73,6 +76,9 @@ describe('Explore Page', () => {
       })
 
     cy.findByText('Under $100').click()
+
+    cy.wait(500)
+
     cy.location('href').should('contain', 'price_lte=100')
     cy.getByDataCy('gamecard')
       .first()
@@ -81,6 +87,9 @@ describe('Explore Page', () => {
       })
 
     cy.findByText('Under $150').click()
+
+    cy.wait(500)
+
     cy.location('href').should('contain', 'price_lte=150')
     cy.getByDataCy('gamecard')
       .first()
@@ -89,6 +98,9 @@ describe('Explore Page', () => {
       })
 
     cy.findByText('Under $250').click()
+
+    cy.wait(500)
+
     cy.location('href').should('contain', 'price_lte=250')
     cy.getByDataCy('gamecard')
       .first()
@@ -97,11 +109,40 @@ describe('Explore Page', () => {
       })
 
     cy.findByText('Under $500').click()
+
+    cy.wait(500)
+
     cy.location('href').should('contain', 'price_lte=500')
     cy.getByDataCy('gamecard')
       .first()
       .within(() => {
         cy.shouldBeLessThan(500)
       })
+  })
+
+  it('should filter by platform and genre', () => {
+    cy.findByText(/windows/i).click()
+    cy.location('href').should('contain', 'platforms=windows')
+
+    cy.findByText(/linux/i).click()
+    cy.location('href').should('contain', 'platforms=linux')
+
+    cy.findByText(/mac os/i).click()
+    cy.location('href').should('contain', 'platforms=mac')
+
+    cy.findByText(/action/i).click()
+    cy.location('href').should('contain', 'categories=action')
+  });
+
+  it('should return empty when no games match', () => {
+    cy.visit('/games')
+
+    //there are no games in this group
+    cy.findByText(/linux/i).click()
+    cy.findByText(/sports/i).click()
+
+    cy.getByDataCy('gamecard').should('not.exist')
+    cy.findByText(/we didn't find any games with this filter/i).should('exist')
+
   })
 })
