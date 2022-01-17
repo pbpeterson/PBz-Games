@@ -1,8 +1,9 @@
+import { eq, first } from 'cypress/types/lodash'
 import { CreateUser } from '../support/generate'
 
 describe('Checkout', () => {
+  let user: User
   describe('Free Games', () => {
-    let user: User
     before(() => {
       user = CreateUser()
     })
@@ -83,6 +84,54 @@ describe('Checkout', () => {
   })
 
   describe('Paid Games', () => {
-    it('should ', () => {})
+    before(() => {
+      user = CreateUser()
+    })
+    it.only('should buy paid games', () => {
+      cy.visit('sign-up')
+      cy.signUp(user)
+      cy.url().should('eq', `${Cypress.config().baseUrl}/`)
+      cy.findAllByText(/explore/i)
+        .first()
+        .click()
+      cy.wait(2000)
+      cy.url().should('eq', `${Cypress.config().baseUrl}/games`)
+
+      cy.getByDataCy('gamecard')
+        .eq(0)
+        .within(() => {
+          cy.findByLabelText(/add to cart/i).click()
+        })
+      cy.getByDataCy('gamecard')
+        .eq(1)
+        .within(() => {
+          cy.findByLabelText(/add to cart/i).click()
+        })
+      cy.getByDataCy('gamecard')
+        .eq(2)
+        .within(() => {
+          cy.findByLabelText(/add to cart/i).click()
+        })
+
+      cy.findAllByLabelText(/cart items/i)
+        .first()
+        .click()
+
+      cy.wait(2000)
+
+      cy.findByRole('link', { name: /buy it now/i }).click()
+
+      cy.wait(2000)
+
+      cy.fillElementsInput('cardNumber', '4242424242424242')
+      cy.fillElementsInput('cardExpiry', '1025')
+      cy.fillElementsInput('cardCvc', '123')
+
+      cy.findByRole('button', { name: /buy now/i }).click()
+
+      cy.wait(5000)
+
+      cy.url().should('eq', `${Cypress.config().baseUrl}/success`)
+    })
   })
 })
