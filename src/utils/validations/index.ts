@@ -9,7 +9,7 @@ const fieldsValidations = {
   confirm_password: Joi.string()
     .valid(Joi.ref('password'))
     .required()
-    .messages({ 'any-only': 'confirm password does not match with password' })
+    .messages({ 'any.only': 'confirm password does not match with password' })
 }
 
 export function signUpValidate(values: signUpValidateProps) {

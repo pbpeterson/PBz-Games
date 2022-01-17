@@ -67,7 +67,7 @@ describe('validations', () => {
       }
 
       expect(signUpValidate(values).confirm_password).toMatchInlineSnapshot(
-        `"\\"confirm_password\\" must be [ref:password]"`
+        `"confirm password does not match with password"`
       )
     })
   })
@@ -104,7 +104,7 @@ describe('validations', () => {
       const values = { password: '123', confirm_password: '321' }
 
       expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
-        `"\\"confirm_password\\" must be [ref:password]"`
+        `"confirm password does not match with password"`
       )
     })
   })

@@ -36,7 +36,9 @@ describe('<FormResetPassword/>', () => {
 
     userEvent.click(screen.getByRole('button', { name: /reset password/i }))
 
-    expect(await screen.findByText('"confirm_password" must be [ref:password]'))
+    expect(
+      await screen.findByText('confirm password does not match with password')
+    )
   })
 
   it('should show error when code provider is wrong', async () => {
