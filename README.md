@@ -3,6 +3,8 @@
 ## Este é um projeto de um ecommerce de jogos feito com  [Next.js](https://nextjs.org/).
 ## Tecnologias usadas
 
+!['Imagem da PBz Games'](./public/img/pbzmain.png)
+
 Principais Tecnologias
 
 - [TypeScript](https://www.typescriptlang.org/)
