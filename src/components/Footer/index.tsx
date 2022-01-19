@@ -27,7 +27,7 @@ const Footer = () => (
             target="_blank"
             rel="noopenner, noreferrer"
           >
-            LinkdIn
+            LinkedIn
           </a>
           <a
             href="https://github.com/pbpeterson"
