@@ -18,7 +18,7 @@ const Footer = () => (
 
       <S.Column aria-labelledby="social-media">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Follow us
+          Follow me
         </Heading>
 
         <nav id="social-media">
@@ -37,7 +37,7 @@ const Footer = () => (
             Github
           </a>
           <a
-            href="https://pbpeterson.github.io/"
+            href="https://github.com/pbpeterson"
             target="_blank"
             rel="noopenner, noreferrer"
           >
@@ -66,11 +66,12 @@ const Footer = () => (
 
       <S.Column aria-labelledby="contact">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Location
+          About
         </Heading>
-        <span>Lorem ipsum dolor sit.</span>
-        <span>Lorem Ipsum</span>
-        <span>Lorem, ipsum dolor.</span>
+        <span>
+          Este projeto é feito com testes do inicio ao fim, para saber mais dê
+          uma olhadinha no repositório 😊.
+        </span>
       </S.Column>
     </S.Content>
     <S.Copyright>Pbz Games 2022 © All rights reserved.</S.Copyright>

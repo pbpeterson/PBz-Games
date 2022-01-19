@@ -7,8 +7,8 @@ describe('<Footer />', () => {
     render(<Footer />)
 
     expect(screen.getByText(/contact/i)).toBeInTheDocument()
-    expect(screen.getByText(/follow us/i)).toBeInTheDocument()
+    expect(screen.getByText(/follow me/i)).toBeInTheDocument()
     expect(screen.getByText(/links/i)).toBeInTheDocument()
-    expect(screen.getByText(/location/i)).toBeInTheDocument()
+    expect(screen.getByText(/about/i)).toBeInTheDocument()
   })
 })
