@@ -1,6 +1,6 @@
-#PBz Games
+# PBz Games
 
-##Este é um projeto de um ecommerce de jogos feito com  [Next.js](https://nextjs.org/).
+## Este é um projeto de um ecommerce de jogos feito com  [Next.js](https://nextjs.org/).
 ## Tecnologias usadas
 
 Principais Tecnologias
