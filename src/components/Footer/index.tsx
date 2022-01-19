@@ -23,32 +23,25 @@ const Footer = () => (
 
         <nav id="social-media">
           <a
-            href="https://www.instagram.com/won-games"
+            href="https://www.linkedin.com/in/pbpeterson/"
             target="_blank"
             rel="noopenner, noreferrer"
           >
-            Instagram
+            LinkdIn
           </a>
           <a
-            href="https://www.twitter.com/won-games"
+            href="https://github.com/pbpeterson"
             target="_blank"
             rel="noopenner, noreferrer"
           >
-            Twitter
+            Github
           </a>
           <a
-            href="https://www.youtube.com/won-games"
+            href="https://pbpeterson.github.io/"
             target="_blank"
             rel="noopenner, noreferrer"
           >
-            Youtube
-          </a>
-          <a
-            href="https://www.facebook.com/won-games"
-            target="_blank"
-            rel="noopenner, noreferrer"
-          >
-            Facebook
+            Personal Website
           </a>
         </nav>
       </S.Column>
