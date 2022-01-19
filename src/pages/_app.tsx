@@ -35,7 +35,7 @@ function App({ Component, pageProps }: AppProps) {
                 <meta name="theme-color" content="#121212" />
                 <meta
                   name="description"
-                  content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
+                  content="Este é um projeto de uma loja de jogos usando NextJS, Typescript, Styled-Components e suas melhores práticas como testes com jest, testing library e cypress, venha conferir!"
                 />
               </Head>
               <DefaultSeo {...SEO} />
