@@ -27,10 +27,10 @@ export default {
     fast: '0.1s ease-in-out'
   },
   colors: {
-    primary: '#F231A5',
-    secondary: '#3CD3C1',
+    primary: '#045757',
+    secondary: '#FF0005',
     lightBg: '#F2F2F2',
-    mainBg: '#06092B',
+    mainBg: '#222222',
     white: '#FAFAFA',
     black: '#030517',
     lightGray: '#EAEAEA',

@@ -3,7 +3,7 @@ export default {
     type: 'website',
     locale: 'en_US',
     url: 'https://pbpeterson.github.io/',
-    site_name: 'Won Games'
+    site_name: 'PBz Games'
   },
   twitter: {
     handle: '@pbpeterson',

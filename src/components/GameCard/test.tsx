@@ -41,7 +41,7 @@ describe('<GameCard />', () => {
       'text-decoration': 'line-through'
     })
     expect(screen.getByText('$235.00')).toHaveStyle({
-      'background-color': '#3CD3C1'
+      'background-color': '#FF0005'
     })
   })
 

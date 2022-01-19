@@ -35,7 +35,7 @@ function App({ Component, pageProps }: AppProps) {
               </Head>
               <DefaultSeo {...SEO} />
               <GlobalStyles />
-              <NextProgress color="#F231A5" height={3} />
+              <NextProgress color="#FF0005" height={3} />
               <Component {...pageProps} />
             </WishlistProvider>
           </CartProvider>

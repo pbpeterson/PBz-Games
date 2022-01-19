@@ -7,7 +7,7 @@ describe('<Loading />', () => {
     render(<Loading />)
 
     expect(screen.getByLabelText('loading')).toHaveStyle({
-      border: '10px solid #F231A5'
+      border: '10px solid #045757'
     })
   })
 })

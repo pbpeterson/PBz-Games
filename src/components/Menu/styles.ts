@@ -62,7 +62,7 @@ export const MenuLink = styled.a`
         position: absolute;
         display: block;
         height: 0.3rem;
-        background-color: ${theme.colors.primary};
+        background-color: ${theme.colors.secondary};
         animation: hoverAnimation 0.2s forwards;
       }
       @keyframes hoverAnimation {

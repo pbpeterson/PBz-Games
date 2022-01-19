@@ -13,7 +13,7 @@ const Footer = () => (
           Contact
         </Heading>
 
-        <a href="mailto:sac@wongames.com">sac@wongames.com</a>
+        <a href="mailto:petersonbozza11@gmail.com">sac@pbzgames.com</a>
       </S.Column>
 
       <S.Column aria-labelledby="social-media">
@@ -80,7 +80,7 @@ const Footer = () => (
         <span>Lorem, ipsum dolor.</span>
       </S.Column>
     </S.Content>
-    <S.Copyright>Won Games 2020 © All rights reserved.</S.Copyright>
+    <S.Copyright>Pbz Games 2022 © All rights reserved.</S.Copyright>
   </S.Wrapper>
 )
 

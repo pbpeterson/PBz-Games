@@ -25,7 +25,7 @@ describe('<Heading />', () => {
     render(<Heading lineLeft>Won Games</Heading>)
 
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyle({
-      'border-left': '0.7rem solid #F231A5'
+      'border-left': '0.7rem solid #045757'
     })
   })
 
@@ -34,7 +34,7 @@ describe('<Heading />', () => {
 
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyleRule(
       'background',
-      '#F231A5',
+      '#045757',
       {
         modifier: '::after'
       }
@@ -66,7 +66,7 @@ describe('<Heading />', () => {
 
     expect(screen.getByRole('heading', { name: /most populars/i })).toHaveStyle(
       {
-        'border-left': '0.7rem solid #F231A5'
+        'border-left': '0.7rem solid #045757'
       }
     )
   }),
