@@ -5,7 +5,7 @@ import Auth from '.'
 describe('<Auth />', () => {
   it('should render all components and  children', () => {
     const mainHeading = 'All your favorite games in one place'
-    const subtitle = 'WON is the best and most complete gaming plataform'
+    const subtitle = 'PBZ is the best and most complete gaming plataform'
     render(
       <Auth title="Auth Title">
         <input type="text" />

@@ -21,18 +21,18 @@ const Auth = ({ title, children }: AuthProps) => (
         <div>
           <Heading size="huge">All your favorite games in one place</Heading>
           <S.SubTitle>
-            <strong>WON</strong> is the best and most complete gaming plataform
+            <strong>PBZ</strong> is the best and most complete gaming plataform
           </S.SubTitle>
         </div>
 
-        <S.Footer>Won Games 2021 © Todos os direitos reservados.</S.Footer>
+        <S.Footer>PBZ Games 2021 © Todos os direitos reservados.</S.Footer>
       </S.BannerContent>
     </S.BannerBlock>
     <S.Content>
       <S.ContentWrapper>
         <Link href="/">
           <a>
-            <Logo color="black" size="large" id="logoBanner" />
+            <Logo isAuth color="black" size="large" id="logoBanner" />
           </a>
         </Link>
         <Heading color="black" lineColor="secondary" lineLeft>
