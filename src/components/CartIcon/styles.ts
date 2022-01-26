@@ -14,7 +14,7 @@ export const Badge = styled.span`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${theme.colors.secondary};
+    background: ${theme.colors.primary};
     color: ${theme.colors.white};
     font-size: 1rem;
     border-radius: 50%;

@@ -35,7 +35,7 @@ describe('<Banner />', () => {
     const ribbon = screen.getByText(/My Ribbon/i)
 
     expect(ribbon).toBeInTheDocument()
-    expect(ribbon).toHaveStyle({ backgroundColor: '#FF0005' })
+    expect(ribbon).toHaveStyle({ backgroundColor: '#5A060A' })
     expect(ribbon).toHaveStyle({
       height: '2.6rem',
       fontSize: '1.2rem'

@@ -13,7 +13,7 @@ describe('<Ribbon />', () => {
     render(<Ribbon>Best seller</Ribbon>)
 
     expect(screen.getByText(/best seller/i)).toHaveStyle({
-      'background-color': '#045757'
+      'background-color': '#EF3C4E'
     })
   })
 
@@ -21,7 +21,14 @@ describe('<Ribbon />', () => {
     render(<Ribbon color="secondary">Best seller</Ribbon>)
 
     expect(screen.getByText(/best seller/i)).toHaveStyle({
-      'background-color': '#FF0005'
+      'background-color': '#5A060A'
+    })
+  })
+  it('should render with the mainBg color', () => {
+    render(<Ribbon color="mainBg">Best seller</Ribbon>)
+
+    expect(screen.getByText(/best seller/i)).toHaveStyle({
+      'background-color': '#020101'
     })
   })
   it('should render with the normal size as default', () => {

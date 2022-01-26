@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-export type RibbonColors = 'primary' | 'secondary'
+export type RibbonColors = 'primary' | 'secondary' | 'mainBg'
 export type RibbonSizes = 'normal' | 'small'
 
 export type RibbonProps = {

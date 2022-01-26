@@ -20,7 +20,7 @@ const GameInfo = ({ id, title, description, price }: GameInfoProps) => (
 
     <S.Description>{description}</S.Description>
 
-    <Ribbon color="secondary">{formatPrice(price)}</Ribbon>
+    <Ribbon color="mainBg">{formatPrice(price)}</Ribbon>
 
     <S.ButtonsWrapper>
       <CartButton id={id} size="large" hasText />

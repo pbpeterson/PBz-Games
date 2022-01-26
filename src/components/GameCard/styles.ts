@@ -98,7 +98,6 @@ const priceModifiers = {
   default: (theme: DefaultTheme) => css`
     color: ${theme.colors.white};
     padding: 0 ${theme.spacings.xxsmall};
-    background-color: ${theme.colors.secondary};
     border-radius: ${theme.border.radius};
     margin-right: calc(${theme.spacings.xxsmall} / 2);
   `,
@@ -116,6 +115,7 @@ export const Price = styled.div<PriceProps>`
     font-weight: ${theme.font.bold};
     height: 3rem;
     align-items: center;
+    background-color: ${theme.colors.mainBg};
     ${!isPromotional && priceModifiers.default(theme)}
     ${isPromotional && priceModifiers.promotional(theme)}
   `}
