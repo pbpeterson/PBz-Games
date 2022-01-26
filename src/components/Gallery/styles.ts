@@ -84,5 +84,5 @@ export const Close = styled.div`
 
 export const Content = styled.div`
   max-height: 80rem;
-  width: min(150rem, 100%);
+  width: min(120rem, 100%);
 `
