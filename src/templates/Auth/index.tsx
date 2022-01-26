@@ -32,7 +32,7 @@ const Auth = ({ title, children }: AuthProps) => (
       <S.ContentWrapper>
         <Link href="/">
           <a>
-            <Logo isAuth color="black" size="large" id="logoBanner" />
+            <Logo color="black" size="large" id="logoBanner" />
           </a>
         </Link>
         <Heading color="black" lineColor="secondary" lineLeft>

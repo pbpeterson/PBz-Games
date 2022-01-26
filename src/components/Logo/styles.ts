@@ -38,4 +38,10 @@ export const Wrapper = styled.main<LogoProps>`
     ${!!size && wrapperModifiers[size]}
     ${!!hideOnMobile && wrapperModifiers.hideOnMobile}
   `}
+
+  @media (max-width: 40rem) {
+    .text {
+      display: none;
+    }
+  }
 `
