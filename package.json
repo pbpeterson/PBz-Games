@@ -73,7 +73,7 @@
     "@typescript-eslint/parser": "^4.28.3",
     "apollo": "^2.33.6",
     "babel-loader": "^8.2.2",
-    "babel-plugin-styled-components": "^1.13.2",
+    "babel-plugin-styled-components": "^2.0.6",
     "cypress": "^9.2.0",
     "cypress-plugin-stripe-elements": "^1.0.2",
     "eslint": "^7.30.0",
