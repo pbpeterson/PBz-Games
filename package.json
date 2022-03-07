@@ -86,7 +86,7 @@
     "husky": "^7.0.1",
     "jest-styled-components": "^7.0.5",
     "lint-staged": "^11.0.1",
-    "msw": "^0.35.0",
+    "msw": "^0.38.2",
     "node-fetch": "2",
     "plop": "^2.7.4",
     "prettier": "^2.3.2",
